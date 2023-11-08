@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "lib": ["es2023"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "declaration": true,
+    "pretty": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "rootDir": "./src",
+    "outDir": "./lib",
+    "importHelpers": true,
+    "baseUrl": "./src",
+    "paths": {
+      "*": ["*"],
+      "@accounts/mikro-orm": ["."],
+      "@accounts/types": ["./accounts-types"]
+    }
+  },
+  "exclude": ["node_modules", "__tests__", "lib"]
+}
