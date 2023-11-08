@@ -88,7 +88,7 @@ export const getSessionSchema = ({
         onUpdate: () => new Date(),
         nullable: true,
       },
-      user: { reference: 'm:1', wrappedReference: true, type: UserEntity?.name ?? 'User' },
+      user: { kind: 'm:1', ref: true, type: UserEntity?.name ?? 'User' },
       token: { type: 'string' },
       valid: { type: 'boolean' },
       userAgent: { type: 'string', nullable: true },

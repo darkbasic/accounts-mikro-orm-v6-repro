@@ -119,17 +119,17 @@ export const getUserSchema = ({
       username: { type: 'string', nullable: true },
       deactivated: { type: 'boolean', default: false, onCreate: () => false },
       services: {
-        reference: '1:m',
+        kind: '1:m',
         entity: () => ServiceEntity?.name ?? Service.name,
         mappedBy: (service: any) => service.user,
       },
       emails: {
-        reference: '1:m',
+        kind: '1:m',
         entity: () => EmailEntity?.name ?? Email.name,
         mappedBy: (email: any) => email.user,
       },
       sessions: {
-        reference: '1:m',
+        kind: '1:m',
         entity: () => SessionEntity?.name ?? Session.name,
         mappedBy: (session: any) => session.user,
       },

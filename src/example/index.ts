@@ -34,9 +34,9 @@ void (async () => {
   }
   import Service
   */
-  const users = await orm.em.find(User, {}); // Loaded<CustomUser<any>, never>[]
+  const users = await orm.em.find(User, {}); // Loaded<CustomUser, never, never>[]
   const emails = await users[0].emails.loadItems(); // Loaded<CustomEmail, never>[]
-  const services = await orm.em.find(Service, {}); // Loaded<Service<any>, never>[]
+  const services = await orm.em.find(Service, {}); // Loaded<Service<any>, never, never>[]
   const user = await services[0].user.load(); // any
-  const anotherUser = await new Service({} as any).user.load(); // CustomUser
+  const anotherUser = await new Service({} as any).user.load(); // Loaded<CustomUser, never>
 })();

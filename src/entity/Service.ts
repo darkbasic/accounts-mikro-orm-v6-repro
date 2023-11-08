@@ -67,7 +67,7 @@ export const getServiceSchema = ({
     abstract,
     properties: {
       id: { type: 'number', primary: true },
-      user: { reference: 'm:1', wrappedReference: true, type: UserEntity?.name ?? 'User' },
+      user: { kind: 'm:1', ref: true, type: UserEntity?.name ?? 'User' },
       name: { type: 'string' },
       token: { type: 'string', nullable: true },
       options: { type: 'json', nullable: true },

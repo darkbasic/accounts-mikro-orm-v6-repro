@@ -63,7 +63,7 @@ export const getEmailSchema = ({
     abstract,
     properties: {
       id: { type: 'number', primary: true },
-      user: { reference: 'm:1', wrappedReference: true, type: UserEntity?.name ?? 'User' },
+      user: { kind: 'm:1', ref: true, type: UserEntity?.name ?? 'User' },
       address: { type: 'string' },
       verified: { type: 'boolean', default: false, onCreate: () => false },
     },
