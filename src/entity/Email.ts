@@ -1,10 +1,10 @@
-import { Ref, Reference, EntitySchema } from '@mikro-orm/core';
+import { Reference, EntitySchema, ref } from '@mikro-orm/core';
 import { IUser, UserCtor } from './User';
 
 export class Email<CustomUser extends IUser<any, any, any>> {
   id!: number;
 
-  user!: Ref<CustomUser>;
+  user!: Reference<CustomUser> & { id: number };
 
   address: string;
 
@@ -13,7 +13,7 @@ export class Email<CustomUser extends IUser<any, any, any>> {
   constructor({ address, user, verified }: EmailCtorArgs<CustomUser>) {
     this.address = address.toLocaleLowerCase();
     if (user) {
-      this.user = Reference.create(user);
+      this.user = ref(user);
     }
     if (verified) {
       this.verified = verified;

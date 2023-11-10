@@ -1,10 +1,10 @@
-import { Ref, Reference, EntitySchema } from '@mikro-orm/core';
+import { Reference, EntitySchema, ref } from '@mikro-orm/core';
 import { IUser, UserCtor } from './User';
 
 export class Service<CustomUser extends IUser<any, any, any>> {
   id!: number;
 
-  user!: Ref<CustomUser>;
+  user!: Reference<CustomUser> & { id: number };
 
   name: string;
 
@@ -16,7 +16,7 @@ export class Service<CustomUser extends IUser<any, any, any>> {
     this.name = name;
 
     if (user) {
-      this.user = Reference.create(user);
+      this.user = ref(user);
     }
 
     if (password) {

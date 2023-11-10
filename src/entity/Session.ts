@@ -1,4 +1,4 @@
-import { Ref, Reference, EntitySchema } from '@mikro-orm/core';
+import { Reference, EntitySchema, ref } from '@mikro-orm/core';
 import { IUser, UserCtor } from './User';
 
 export class Session<CustomUser extends IUser<any, any, any>> {
@@ -8,7 +8,7 @@ export class Session<CustomUser extends IUser<any, any, any>> {
 
   updatedAt: Date = new Date();
 
-  user: Ref<CustomUser>;
+  user: Reference<CustomUser> & { id: number };
 
   token: string;
 
@@ -21,7 +21,7 @@ export class Session<CustomUser extends IUser<any, any, any>> {
   extra?: object;
 
   constructor({ user, token, valid, userAgent, ip, extra }: SessionCtorArgs<CustomUser>) {
-    this.user = Reference.create(user);
+    this.user = ref(user);
     this.token = token;
     this.valid = valid;
     if (userAgent) {
